@@ -1,14 +1,19 @@
 #!/bin/bash
-# Install dnf packages
-echo "Installing dnf packages."
-sudo dnf install akmod-nvidia alien audacity dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio steam yt-dlp -y
-
 # Configure system
 echo "Configuring system."
 git config --global user.name "Luke-Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
 echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
 sudo sh -c "echo \"defaultyes=True\" >> /etc/dnf/dnf.conf"
+sudo sh -c "echo \"max_parallel_downloads=10\" >> /etc/dnf/dnf.conf"
+
+# Install dnf packages
+echo "Installing dnf packages."
+sudo dnf update -y
+sudo dnf install akmod-nvidia alien audacity dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio steam yt-dlp -y
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
+sudo dnf install lame\* --exclude=lame-devel -y
+sudo dnf group upgrade --with-optional Multimedia -y
 
 # Non-automated installs
 echo "Manually install these programs:"
