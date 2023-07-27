@@ -6,6 +6,7 @@ git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com
 echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
 sudo sh -c "echo \"defaultyes=True\" >> /etc/dnf/dnf.conf"
 sudo sh -c "echo \"max_parallel_downloads=10\" >> /etc/dnf/dnf.conf"
+sudo cp -r ../shortcuts/* /usr/share/applications/
 
 # Install dnf packages
 echo "Installing dnf packages."
