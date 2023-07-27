@@ -35,10 +35,13 @@ flutter config --enable-linux-desktop
 flutter config --enable-macos-desktop
 flutter config --enable-windows-desktop
 
+# Configure system
+echo "Configuring system."
 # Configure git
-echo "Configuring git."
 git config --global user.name "Luke-Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
+# Autocomplete ignore case
+echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
 
 # Upgrade packages
 echo "Upgrading packages"
