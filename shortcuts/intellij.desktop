@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/luke/idea-IU-232.8660.185/bin/idea.sh
+Name=IntelliJ IDEA Ultimate
+Icon=/home/luke/idea-IU-232.8660.185/bin/idea.png
