@@ -22,7 +22,7 @@ sudo dnf install lame\* --exclude=lame-devel -y
 sudo dnf group upgrade --with-optional Multimedia -y
 
 # GNOME Extensions
-sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-auto-move-windows gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-openweather -y
+sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-openweather -y
 echo "Install these GNOME Extensions:"
 echo "Alphabetical App Grid:    https://extensions.gnome.org/extension/4269/alphabetical-app-grid/"
 echo "Clipboard History:        https://extensions.gnome.org/extension/4839/clipboard-history/"
