@@ -13,71 +13,54 @@ sudo sh -c "echo \"bind 'set completion-ignore-case on'\" >> /etc/bashrc"
 sudo sh -c "echo \"defaultyes=True\" >> /etc/dnf/dnf.conf"
 sudo sh -c "echo \"max_parallel_downloads=20\" >> /etc/dnf/dnf.conf"
 
+## Configure swap
+sudo sh -c "echo \"vm.swappiness=10\" >> /etc/sysctl.conf"
+sudo sysctl --load
+
 # Install shortcuts
 echo "Installing shortcuts."
-sudo cp -r ../shortcuts/* /usr/share/applications/
+sudo cp -r ../shortcuts/* /usr/share/applications/ -v
+
+# Remove unwanted 3rd party repositories
+echo "Removing unwanted 3rd party repositories."
+sudo rm -f /etc/yum.repos.d/google-chrome.repo -v
+sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.repo -v
+sudo flatpak remote-delete flathub -v
 
 # Install dnf packages
 echo "Installing dnf packages."
-sudo dnf check-update -y
-sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam yt-dlp -y
+dnf check-update -v
+sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam yt-dlp -y -v
 
 ## Multimedia codecs
 echo "Installing multimedia codecs."
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
-sudo dnf install lame\* --exclude=lame-devel -y
-sudo dnf group upgrade --with-optional Multimedia -y
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y -v
+sudo dnf install lame\* --exclude=lame-devel -y -v
+sudo dnf group upgrade --with-optional Multimedia -y -v
+
+# VSCode
+echo "Installing VSCode."
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update -v
+sudo dnf install code -y -v
 
 cd ~/Downloads
-
-# GNOME Extensions
-echo "Installing GNOME Extensions."
-echo "Installing GNOME Extensions avaliable via dnf."
-sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock gnome-shell-extension-openweather -y
-
-## Alphabetical App Grid
-echo "Installing Alphabetical App Grid."
-wget -O alphabetical_app_grid.zip https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v31.shell-extension.zip
-alphabetical_app_grid=$(unzip -c alphabetical_app_grid.zip metadata.json | grep uuid | cut -d \" -f4)
-mkdir -p ~/.local/share/gnome-shell/extensions/$alphabetical_app_grid
-unzip -q alphabetical_app_grid.zip -d ~/.local/share/gnome-shell/extensions/$alphabetical_app_grid
-gnome-extensions enable $alphabetical_app_grid
-
-## Extension List
-echo "Installing Extension List."
-wget -O extension_list.zip https://extensions.gnome.org/extension-data/extension-listtu.berry.v35.shell-extension.zip
-extension_list=$(unzip -c extension_list.zip metadata.json | grep uuid | cut -d \" -f4)
-mkdir -p ~/.local/share/gnome-shell/extensions/$extension_list
-unzip -q extension_list.zip -d ~/.local/share/gnome-shell/extensions/$extension_list
-gnome-extensions enable $extension_list
-
-## Vitals
-echo "Installing Vitals."
-wget -O vitals.zip https://extensions.gnome.org/extension-data/VitalsCoreCoding.com.v61.shell-extension.zip
-vitals=$(unzip -c vitals.zip metadata.json | grep uuid | cut -d \" -f4)
-mkdir -p ~/.local/share/gnome-shell/extensions/$vitals
-unzip -q vitals.zip -d ~/.local/share/gnome-shell/extensions/$vitals
-gnome-extensions enable $vitals
 
 # RPMs
 echo "Installing RPMs."
 ## Bitwarden
 echo "Installing Bitwarden."
 wget -O bitwarden.rpm "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=rpm"
-sudo rpm -i bitwarden.rpm
+sudo rpm -i bitwarden.rpm -v
 
 ## ProtonVPN
 echo "Installing ProtonVPN."
 wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-38-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
-sudo rpm -i protonvpn.rpm
-sudo dnf check-update -y
-sudo dnf install libappindicator-gtk3 protonvpn python3-pip -y
-pip3 install --user 'dnspython>=1.16.0'
-
-## VSCode
-echo "Installing VSCode."
-wget -O vscode.rpm "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
-sudo rpm -i vscode.rpm
+sudo rpm -i protonvpn.rpm -v
+dnf check-update -v
+sudo dnf install libappindicator-gtk3 protonvpn python3-pip -y -v
+pip3 install --user 'dnspython>=1.16.0' -v
 
 # Tarballs
 echo "Installing tarballs."
@@ -85,33 +68,43 @@ echo "Installing tarballs."
 echo "Installing Discord."
 wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz"
 tar -xvf discord.tar.gz
-sudo mv Discord /opt/
+sudo mv Discord /opt/ -v
 sudo ln -svf /opt/Discord/Discord /usr/bin/discord
 
 ## Install IntelliJ IDEA Ultimate
 echo "Installing IntelliJ IDEA Ultimate."
 wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2023.2.tar.gz
 tar -xvf idea.tar.gz
-sudo mkdir /opt/idea/
-sudo chmod 777 /opt/idea/
-sudo mv idea-*/* /opt/idea/
+sudo mkdir /opt/idea/ -v
+sudo chmod 777 /opt/idea/ -v
+sudo mv idea-*/* /opt/idea/ -v
 sudo ln -svf /opt/idea/bin/idea.sh /usr/bin/intellij-idea-ultimate
 
-# Install Minecraft
+## Install Minecraft
 echo "Installing Minecraft."
 wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
 tar -xvf minecraft.tar.gz
-sudo mv minecraft-launcher /opt/
-sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft
+sudo mv minecraft-launcher /opt/ -v
+sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
 
-# Install Postman
+## Install Postman
 echo "Installing Postman."
 wget -O postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
 tar -xvf postman.tar.gz
-sudo mv Postman /opt/
+sudo mv Postman /opt/ -v
 sudo ln -svf /opt/Postman/Postman /usr/bin/postman
 
-sudo dnf upgrade -y && sudo dnf autoremove -y
+sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
+
+# GNOME Extensions
+echo "Install these GNOME Extensions manually:"
+echo "Alphabetical App Grid:    https://extensions.gnome.org/extension/4269/alphabetical-app-grid/"
+echo "AppIndicator:             https://extensions.gnome.org/extension/615/appindicator-support/"
+echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-to-dock/"
+echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
+echo "OpenWeather:              https://extensions.gnome.org/extension/750/openweather/"
+echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
+
 read -rsp $'Press any key to continue...\n' -n 1 key
 
 # Reboot
