@@ -30,7 +30,11 @@ sudo flatpak remote-delete flathub -v
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam xkill yt-dlp -y -v
+sudo dnf install alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam xkill yt-dlp -y -v
+
+## NVIDIA Drivers
+echo "Installing NVIDIA drivers."
+sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan -y -v
 
 ## Multimedia codecs
 echo "Installing multimedia codecs."
