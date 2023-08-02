@@ -1,7 +1,8 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
-Terminal=false
-Exec=/opt/minecraft-launcher/minecraft-launcher
+Version=1.0
 Name=Minecraft
+Comment=Official Minecraft Launcher
+Terminal=false
 Icon=/usr/share/icons/Adwaita/scalable/mimetypes/application-x-executable.svg
+Exec=/opt/minecraft-launcher/minecraft-launcher

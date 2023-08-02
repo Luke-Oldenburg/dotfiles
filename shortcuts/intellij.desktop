@@ -1,7 +1,8 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
-Terminal=false
-Exec=/opt/idea/bin/idea.sh
+Version=1.0
 Name=IntelliJ IDEA Ultimate
+Comment=Capable & Ergonomic Java IDE for Enterprise, Web & Mobile Development
+Terminal=false
 Icon=/opt/idea/bin/idea.svg
+Exec=/opt/idea/bin/idea.sh
