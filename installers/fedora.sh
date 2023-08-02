@@ -7,14 +7,16 @@ git config --global user.name "Luke-Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
 
 ## Autocomplete ignore case
-sudo sh -c "echo \"bind 'set completion-ignore-case on'\" >> /etc/bashrc"
+echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
 
 ## Configure dnf
-sudo sh -c "echo \"defaultyes=True\" >> /etc/dnf/dnf.conf"
-sudo sh -c "echo \"max_parallel_downloads=20\" >> /etc/dnf/dnf.conf"
+echo "defaultyes=True" | sudo tee -a /etc/dnf/dnf.conf
+echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
+echo "max_parallel_downloads=20" | sudo tee -a /etc/dnf/dnf.conf
+echo "deltarpm=True" | sudo tee -a /etc/dnf/dnf.conf
 
 ## Configure swap
-sudo sh -c "echo \"vm.swappiness=10\" >> /etc/sysctl.conf"
+echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
 sudo sysctl --load
 
 # Install shortcuts
