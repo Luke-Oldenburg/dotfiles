@@ -2,6 +2,6 @@
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/home/luke/Postman/Postman
+Exec=/opt/Postman/Postman
 Name=Postman
-Icon=/home/luke/Postman/app/icons/icon_128x128.png
+Icon=/opt/Postman/app/icons/icon_128x128.png
