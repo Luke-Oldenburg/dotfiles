@@ -8,6 +8,8 @@ git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com
 
 ## Autocomplete ignore case
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
+echo "alias ff=\"firefox\"" | sudo tee -a /etc/bashrc
+echo "alias de=\"dconf-editor\"" | sudo tee -a /etc/bashrc
 
 ## Configure dnf
 echo "defaultyes=True" | sudo tee -a /etc/dnf/dnf.conf
