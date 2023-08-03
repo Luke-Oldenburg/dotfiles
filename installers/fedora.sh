@@ -34,11 +34,11 @@ sudo flatpak remote-delete flathub -v
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam xkill yt-dlp -y -v
+sudo dnf install alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks golang htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam xkill yt-dlp -y -v
 
 ## NVIDIA Drivers
 echo "Installing NVIDIA drivers."
-sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan -y -v
+sudo dnf install akmod-nvidia libva-utils libva-vdpau-driver vdpauinfo vulkan xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y -v
 
 ## Multimedia codecs
 echo "Installing multimedia codecs."
@@ -79,12 +79,26 @@ tar -xvf discord.tar.gz
 sudo mv Discord /opt/ -v
 sudo ln -svf /opt/Discord/Discord /usr/bin/discord
 
+## Install Flutter
+echo "Installing Flutter."
+sudo dnf install clang cmake ninja-build pkg-config gtk3* -y -v
+wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
+tar -xvf flutter.tar.xz
+sudo mv flutter /opt/ -v
+echo "export PATH=\"$PATH:/opt/flutter/bin\"" | sudo tee -a /etc/bashrc
+flutter upgrade --force
+flutter precache
+dart --disable-analytics
+flutter config --no-analytics
+flutter config --enable-linux-desktop
+flutter config --enable-macos-desktop
+flutter config --enable-windows-desktop
+
 ## Install IntelliJ IDEA Ultimate
 echo "Installing IntelliJ IDEA Ultimate."
 wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2023.2.tar.gz
 tar -xvf idea.tar.gz
 sudo mkdir /opt/idea/ -v
-sudo chmod 777 /opt/idea/ -v
 sudo mv idea-*/* /opt/idea/ -v
 sudo ln -svf /opt/idea/bin/idea.sh /usr/bin/intellij-idea-ultimate
 
