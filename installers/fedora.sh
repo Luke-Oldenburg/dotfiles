@@ -3,7 +3,7 @@
 echo "Configuring bash, dnf, and git."
 
 ## Configure git
-git config --global user.name "Luke-Oldenburg"
+git config --global user.name "Luke Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
 
 ## Autocomplete ignore case

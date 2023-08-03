@@ -38,7 +38,7 @@ flutter config --enable-windows-desktop
 # Configure system
 echo "Configuring system."
 # Configure git
-git config --global user.name "Luke-Oldenburg"
+git config --global user.name "Luke Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
 # Autocomplete ignore case
 echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
