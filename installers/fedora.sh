@@ -34,7 +34,7 @@ sudo flatpak remote-delete flathub -v
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks golang htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust steam xkill yt-dlp -y -v
+sudo dnf install alien audacity dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks golang htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio steam xkill yt-dlp -y -v
 
 ## NVIDIA Drivers
 echo "Installing NVIDIA drivers."
@@ -52,6 +52,10 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update -v
 sudo dnf install code -y -v
+
+# Rust
+echo "Installing Rust."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cd ~/Downloads
 
