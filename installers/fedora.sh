@@ -8,8 +8,6 @@ git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com
 
 ## Autocomplete ignore case
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
-echo "alias ff=\"firefox\"" | sudo tee -a /etc/bashrc
-echo "alias de=\"dconf-editor\"" | sudo tee -a /etc/bashrc
 
 ## Configure dnf
 echo "defaultyes=True" | sudo tee -a /etc/dnf/dnf.conf
@@ -119,6 +117,11 @@ wget -O postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
 tar -xvf postman.tar.gz
 sudo mv Postman /opt/ -v
 sudo ln -svf /opt/Postman/Postman /usr/bin/postman
+
+## Links
+echo "Creating links."
+sudo ln -sv /usr/bin/firefox /usr/bin/ff
+sudo ln -sv /usr/bin/dconf-editor /usr/bin/de
 
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
