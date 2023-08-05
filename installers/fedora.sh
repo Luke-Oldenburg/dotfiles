@@ -88,6 +88,7 @@ wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/rele
 tar -xvf flutter.tar.xz
 sudo mv flutter /opt/ -v
 echo "export PATH=\"$PATH:/opt/flutter/bin\"" | sudo tee -a /etc/bashrc
+source /etc/bashrc
 flutter upgrade --force
 flutter precache
 dart --disable-analytics
