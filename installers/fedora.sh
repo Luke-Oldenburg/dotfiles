@@ -64,6 +64,12 @@ echo "Installing Bitwarden."
 wget -O bitwarden.rpm "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=rpm"
 sudo rpm -i bitwarden.rpm -v
 
+## OnlyOffice
+echo "Installing OnlyOffice."
+sudo dnf remove libreoffice* -y -v
+wget -O onlyoffice.rpm https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm
+sudo rpm -i onlyoffice.rpm -v
+
 ## ProtonVPN
 echo "Installing ProtonVPN."
 wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-38-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
