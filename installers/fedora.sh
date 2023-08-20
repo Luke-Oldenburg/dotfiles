@@ -8,6 +8,11 @@ git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com
 
 ## Autocomplete ignore case
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
+echo "alias dcd='dconf dump / > ~/.config/dconf/user.conf'" | sudo tee -a /etc/bashrc
+echo "alias dcl='dconf load / < ~/.config/dconf/user.conf'" | sudo tee -a /etc/bashrc
+echo "alias httpserver='python3 -m http.server'" | sudo tee -a /etc/bashrc
+echo "alias rpi='ssh luke@pi.lukeoldenburg.com'" | sudo tee -a /etc/bashrc
+echo "alias dnfup='sudo dnf upgrade && sudo dnf autoremove'" | sudo tee -a /etc/bashrc
 
 ## Configure dnf
 echo "defaultyes=True" | sudo tee -a /etc/dnf/dnf.conf
@@ -128,7 +133,7 @@ sudo ln -svf /opt/Postman/Postman /usr/bin/postman
 ## Links
 echo "Creating links."
 sudo ln -sv /usr/bin/firefox /usr/bin/ff
-sudo ln -sv /usr/bin/dconf-editor /usr/bin/de
+sudo ln -sv /usr/bin/dconf-editor /usr/bin/dce
 
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
