@@ -87,10 +87,7 @@ pip3 install --user 'dnspython>=1.16.0' -v
 echo "Installing tarballs."
 ## Install Discord
 echo "Installing Discord."
-wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz"
-tar -xvf discord.tar.gz
-sudo mv Discord /opt/ -v
-sudo ln -svf /opt/Discord/Discord /usr/bin/discord
+bash discord.sh
 
 ## Install Flutter
 echo "Installing Flutter."
