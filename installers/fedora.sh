@@ -52,16 +52,21 @@ sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-open
 sudo dnf install lame\* --exclude=lame-devel -y -v
 sudo dnf group upgrade --with-optional Multimedia -y -v
 
-# VSCode
+# Misc install scripts
+## Rust
+echo "Installing Rust."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+## Tailscale
+echo "Installing tailscale."
+curl -fsSL https://tailscale.com/install.sh | sh
+
+## VSCode
 echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update -v
 sudo dnf install code -y -v
-
-# Rust
-echo "Installing Rust."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cd ~/Downloads
 
