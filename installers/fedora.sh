@@ -52,6 +52,11 @@ sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-open
 sudo dnf install lame\* --exclude=lame-devel -y -v
 sudo dnf group upgrade --with-optional Multimedia -y -v
 
+# Links
+echo "Creating links."
+sudo ln -sv /usr/bin/firefox /usr/bin/ff
+sudo ln -sv /usr/bin/dconf-editor /usr/bin/dce
+
 # Misc install scripts
 ## Rust
 echo "Installing Rust."
@@ -93,6 +98,13 @@ pip3 install --user 'dnspython>=1.16.0' -v
 
 # Tarballs
 echo "Installing tarballs."
+## Install Android Studio
+echo "Installing Android Studio."
+wget -O android.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.23/android-studio-2020.3.1.23-linux.tar.gz
+tar -xvf android.tar.gz
+sudo mv android-studio /opt/ -v
+sudo ln -svf /opt/android-studio/bin/studio.sh /usr/bin/android-studio
+
 ## Install Discord
 echo "Installing Discord."
 bash discord.sh
@@ -134,11 +146,6 @@ wget -O postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
 tar -xvf postman.tar.gz
 sudo mv Postman /opt/ -v
 sudo ln -svf /opt/Postman/Postman /usr/bin/postman
-
-## Links
-echo "Creating links."
-sudo ln -sv /usr/bin/firefox /usr/bin/ff
-sudo ln -sv /usr/bin/dconf-editor /usr/bin/dce
 
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
