@@ -24,6 +24,9 @@ echo "deltarpm=True" | sudo tee -a /etc/dnf/dnf.conf
 echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
 sudo sysctl --load
 
+# Configure gnome
+gsettings set org.gnome.mutter check-alive-timeout 0
+
 # Install shortcuts
 echo "Installing shortcuts."
 sudo cp -r ../shortcuts/* /usr/share/applications/ -v
