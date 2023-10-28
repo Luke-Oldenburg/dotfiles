@@ -1,35 +1,36 @@
 #!/bin/bash
-# Configure system
-echo "Configuring bash, dnf, and git."
 
-## Configure git
+# Configure git
+echo "Configuring git."
 git config --global user.name "Luke Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
+git config --global alias.forcepull '!git fetch --all && git reset --hard origin/$(git symbolic-ref --short HEAD)'
 
-## Autocomplete ignore case
+# Configure bash
+echo "Configuring bash."
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
-echo "alias dcd='dconf dump / > ~/.config/dconf/user.conf'" | sudo tee -a /etc/bashrc
-echo "alias dcl='dconf load / < ~/.config/dconf/user.conf'" | sudo tee -a /etc/bashrc
-echo "alias httpserver='python3 -m http.server'" | sudo tee -a /etc/bashrc
-echo "alias rpi='ssh luke@pi.lukeoldenburg.com'" | sudo tee -a /etc/bashrc
-echo "alias dnfup='sudo dnf upgrade && sudo dnf autoremove'" | sudo tee -a /etc/bashrc
 
-## Configure dnf
+# Configure dnf
+echo "Configuring dnf."
 echo "defaultyes=True" | sudo tee -a /etc/dnf/dnf.conf
 echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
 echo "max_parallel_downloads=20" | sudo tee -a /etc/dnf/dnf.conf
 echo "deltarpm=True" | sudo tee -a /etc/dnf/dnf.conf
 
-## Configure swap
+# Configure swap
+echo "Configuring swap."
 echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
 sudo sysctl --load
 
 # Configure gnome
+echo "Configuring gnome."
 gsettings set org.gnome.mutter check-alive-timeout 0
 
-# Install shortcuts
-echo "Installing shortcuts."
+# Copy files
+echo "Copying files."
 sudo cp -r ../shortcuts/* /usr/share/applications/ -v
+sudo cp ~/Programming/runc /opt/runc -v
+echo "alias runc='/opt/runc'" | sudo tee -a /etc/bashrc
 
 # Remove unwanted 3rd party repositories
 echo "Removing unwanted 3rd party repositories."
