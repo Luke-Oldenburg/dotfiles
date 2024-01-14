@@ -148,15 +148,6 @@ tar -xvf postman.tar.gz
 sudo mv Postman /opt/ -v
 sudo ln -svf /opt/Postman/Postman /usr/bin/postman
 
-## Install WPILib
-echo "Installing WPILib."
-wget -O wpilib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download/v2023.4.3/WPILib_Linux-2023.4.3.tar.gz
-tar -xvf wpilib.tar.gz
-cd WPILib_Linux-2023.4.3
-./WPILibInstaller
-
-# Update
-echo "Updating dnf packages."
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
 # GNOME Extensions
