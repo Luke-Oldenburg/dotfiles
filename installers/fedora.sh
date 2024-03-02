@@ -97,6 +97,11 @@ dnf check-update -v
 sudo dnf install libappindicator-gtk3 protonvpn python3-pip -y -v
 pip3 install --user 'dnspython>=1.16.0' -v
 
+## Slack
+echo "Installing Slack."
+wget -O slack.rpm https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm
+sudo rpm -i slack.rpm -v
+
 # Tarballs
 echo "Installing tarballs."
 ## Install Android Studio
