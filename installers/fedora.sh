@@ -53,11 +53,6 @@ sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-open
 sudo dnf install lame\* --exclude=lame-devel -y -v
 sudo dnf group upgrade --with-optional Multimedia -y -v
 
-# Links
-echo "Creating links."
-sudo ln -sv /usr/bin/firefox /usr/bin/ff
-sudo ln -sv /usr/bin/dconf-editor /usr/bin/dce
-
 # Misc install scripts
 ## Rust
 echo "Installing Rust."
@@ -87,26 +82,32 @@ sudo rpm -i bitwarden.rpm -v
 echo "Installing OnlyOffice."
 sudo dnf remove libreoffice* -y -v
 wget -O onlyoffice.rpm https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm
+sudo dnf install boost-filesystem dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts liberation-narrow-fonts -y -v
 sudo rpm -i onlyoffice.rpm -v
+
+## ProtonMail
+echo "Installing ProtonMail."
+wget -O protonmail.rpm https://proton.me/download/mail/linux/ProtonMail-desktop-beta.rpm
+sudo rpm -i protonmail.rpm -v
 
 ## ProtonVPN
 echo "Installing ProtonVPN."
-wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-38-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
-sudo rpm -i protonvpn.rpm -v
-dnf check-update -v
-sudo dnf install libappindicator-gtk3 protonvpn python3-pip -y -v
-pip3 install --user 'dnspython>=1.16.0' -v
+wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
+sudo dnf install protonvpn.rpm -v
+sudo dnf check-update -v && sudo dnf upgrade -v
+sudo dnf install --refresh proton-vpn-gnome-desktop -v
+sudo dnf install libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app -y -v
 
 ## Slack
 echo "Installing Slack."
-wget -O slack.rpm https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-4.36.140-0.1.el8.x86_64.rpm
+wget -O slack.rpm https://downloads.slack-edge.com/desktop-releases/linux/x64/4.37.94/slack-4.37.94-0.1.el8.x86_64.rpm
 sudo rpm -i slack.rpm -v
 
 # Tarballs
 echo "Installing tarballs."
 ## Install Android Studio
 echo "Installing Android Studio."
-wget -O android.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.23/android-studio-2020.3.1.23-linux.tar.gz
+wget -O android.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.2.1.24/android-studio-2023.2.1.24-linux.tar.gz
 tar -xvf android.tar.gz
 sudo mv android-studio /opt/ -v
 sudo ln -svf /opt/android-studio/bin/studio.sh /usr/bin/android-studio
@@ -118,7 +119,7 @@ bash discord.sh
 ## Install Flutter
 echo "Installing Flutter."
 sudo dnf install clang cmake ninja-build pkg-config gtk3* -y -v
-wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
+wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.5-stable.tar.xz
 tar -xvf flutter.tar.xz
 sudo mv flutter /opt/ -v
 echo "export PATH=\"$PATH:/opt/flutter/bin\"" | sudo tee -a /etc/bashrc
@@ -133,7 +134,7 @@ flutter config --enable-windows-desktop
 
 ## Install IntelliJ IDEA Ultimate
 echo "Installing IntelliJ IDEA Ultimate."
-wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2023.2.tar.gz
+wget -O idea.tar.gz https://download-cdn.jetbrains.com/idea/ideaIU-2024.1.tar.gz
 tar -xvf idea.tar.gz
 sudo mkdir /opt/idea/ -v
 sudo mv idea-*/* /opt/idea/ -v
@@ -159,6 +160,8 @@ sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 echo "Install these GNOME Extensions manually:"
 echo "Alphabetical App Grid:    https://extensions.gnome.org/extension/4269/alphabetical-app-grid/"
 echo "AppIndicator:             https://extensions.gnome.org/extension/615/appindicator-support/"
+echo "Caffeine:                 https://extensions.gnome.org/extension/517/caffeine/"
+echo "Clipboard Indicator:      https://extensions.gnome.org/extension/779/clipboard-indicator/"
 echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-to-dock/"
 echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
 echo "OpenWeather:              https://extensions.gnome.org/extension/750/openweather/"
