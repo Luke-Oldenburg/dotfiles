@@ -85,22 +85,17 @@ wget -O onlyoffice.rpm https://download.onlyoffice.com/install/desktop/editors/l
 sudo dnf install boost-filesystem dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts liberation-narrow-fonts -y -v
 sudo rpm -i onlyoffice.rpm -v
 
-## ProtonMail
-echo "Installing ProtonMail."
-wget -O protonmail.rpm https://proton.me/download/mail/linux/ProtonMail-desktop-beta.rpm
-sudo rpm -i protonmail.rpm -v
-
 ## ProtonVPN
 echo "Installing ProtonVPN."
 wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
 sudo dnf install protonvpn.rpm -v
-sudo dnf check-update -v && sudo dnf upgrade -v
-sudo dnf install --refresh proton-vpn-gnome-desktop -v
+sudo dnf check-update -v && sudo dnf upgrade -y -v
+sudo dnf install --refresh proton-vpn-gnome-desktop -y -v
 sudo dnf install libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app -y -v
 
 ## Slack
 echo "Installing Slack."
-wget -O slack.rpm https://downloads.slack-edge.com/desktop-releases/linux/x64/4.37.94/slack-4.37.94-0.1.el8.x86_64.rpm
+wget -O slack.rpm https://downloads.slack-edge.com/desktop-releases/linux/x64/4.37.101/slack-4.37.101-0.1.el8.x86_64.rpm
 sudo rpm -i slack.rpm -v
 
 # Tarballs
@@ -164,7 +159,6 @@ echo "Caffeine:                 https://extensions.gnome.org/extension/517/caffe
 echo "Clipboard Indicator:      https://extensions.gnome.org/extension/779/clipboard-indicator/"
 echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-to-dock/"
 echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
-echo "OpenWeather:              https://extensions.gnome.org/extension/750/openweather/"
 echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
 
 read -rsp $'Press any key to continue...\n' -n 1 key
