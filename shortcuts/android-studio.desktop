@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Android Studio
+Terminal=false
+Icon=/opt/android-studio/bin/studio.svg
+Exec=/opt/android-studio/bin/studio.sh
