@@ -41,7 +41,7 @@ sudo flatpak remote-delete flathub -v
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install 2048-cli alien apostrophe audacity dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks golang htop java-17-openjdk-* mpv ncdu nmap nodejs nvtop obs-studio seahorse steam xkill yt-dlp -y -v
+sudo dnf install 2048-cli alien apostrophe audacity dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks golang htop java-17-openjdk-* mpv ncdu nmap nodejs nvtop obs-studio seahorse steam wget2-wget xkill yt-dlp -y -v
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 ## NVIDIA Drivers
