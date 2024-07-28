@@ -40,7 +40,7 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install 2048-cli alien apostrophe audacity blender chirp dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio rust seahorse steam wget2-wget xkill yt-dlp -y -v
+sudo dnf install 2048-cli alien apostrophe audacity blender chirp dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam wget2-wget xkill yt-dlp -y -v
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 ## Multimedia codecs
