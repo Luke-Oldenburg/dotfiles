@@ -43,10 +43,6 @@ dnf check-update -v
 sudo dnf install 2048-cli alien apostrophe audacity blender chirp dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio rust seahorse steam wget2-wget xkill yt-dlp -y -v
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
-## NVIDIA Drivers
-echo "Installing NVIDIA drivers."
-sudo dnf install akmod-nvidia libva-utils libva-vdpau-driver vdpauinfo vulkan xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y -v
-
 ## Multimedia codecs
 echo "Installing multimedia codecs."
 sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y -v
