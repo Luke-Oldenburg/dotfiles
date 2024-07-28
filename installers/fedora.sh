@@ -36,7 +36,6 @@ echo "alias runc='/opt/runc'" | sudo tee -a /etc/bashrc
 echo "Removing unwanted 3rd party repositories."
 sudo rm -f /etc/yum.repos.d/google-chrome.repo -v
 sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.repo -v
-sudo flatpak remote-delete flathub -v
 
 # Install dnf packages
 echo "Installing dnf packages."
