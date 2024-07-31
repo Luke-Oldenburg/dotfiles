@@ -47,10 +47,20 @@ sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-open
 sudo dnf install lame\* --exclude=lame-devel -y -v
 sudo dnf group upgrade --with-optional Multimedia -y -v
 
-# CD to Downloads
-cd ~/Downloads
+# Install flatpaks
+echo "Installing flatpaks."
+flatpak install com.bitwarden.desktop -yv
+flatpak install com.discordapp.Discord -yv
+flatpak install com.getpostman.Postman -yv
+flatpak install com.google.AndroidStudio -yv
+flatpak install com.jetbrains.IntelliJ-IDEA-Ultimate -yv
+flatpak install com.protonvpn.www -yv
+flatpak install com.slack.Slack -yv
+flatpak install org.onlyoffice.desktopeditors -yv
+flatpak install org.signal.Signal -yv
 
 # Misc install scripts
+cd ~/Downloads
 ## Tailscale
 echo "Installing tailscale."
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -67,54 +77,6 @@ sudo dnf install python3-wxpython4 pipx
 wget -O chirp.whl https://archive.chirpmyradio.com/chirp_next/next-20240706/chirp-20240706-py3-none-any.whl
 pipx install --system-site-packages ./chirp.whl
 
-# RPMs
-echo "Installing RPMs."
-## Bitwarden
-echo "Installing Bitwarden."
-wget -O bitwarden.rpm "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=rpm"
-sudo rpm -i bitwarden.rpm -v
-
-## OnlyOffice
-echo "Installing OnlyOffice."
-sudo dnf remove libreoffice* -y -v
-wget -O onlyoffice.rpm https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm
-sudo dnf install boost-filesystem dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts liberation-narrow-fonts -y -v
-sudo rpm -i onlyoffice.rpm -v
-
-## ProtonVPN
-echo "Installing ProtonVPN."
-wget -O protonvpn.rpm https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
-sudo dnf install protonvpn.rpm -v
-sudo dnf check-update -v && sudo dnf upgrade -y -v
-sudo dnf install --refresh proton-vpn-gnome-desktop -y -v
-sudo dnf install libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app -y -v
-
-## Slack
-echo "Installing Slack."
-wget -O slack.rpm https://downloads.slack-edge.com/desktop-releases/linux/x64/4.37.101/slack-4.37.101-0.1.el8.x86_64.rpm
-sudo rpm -i slack.rpm -v
-
-# Tarballs
-echo "Installing tarballs."
-## Install Android Studio
-echo "Installing Android Studio."
-wget -O android.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.2.1.24/android-studio-2023.2.1.24-linux.tar.gz
-tar -xvf android.tar.gz
-sudo mv android-studio /opt/ -v
-sudo ln -svf /opt/android-studio/bin/studio.sh /usr/bin/android-studio
-
-## Install Discord
-echo "Installing Discord."
-bash discord.sh
-
-## Install IntelliJ IDEA Ultimate
-echo "Installing IntelliJ IDEA Ultimate."
-wget -O idea.tar.gz https://download-cdn.jetbrains.com/idea/ideaIU-2024.1.tar.gz
-tar -xvf idea.tar.gz
-sudo mkdir /opt/idea/ -v
-sudo mv idea-*/* /opt/idea/ -v
-sudo ln -svf /opt/idea/bin/idea.sh /usr/bin/intellij-idea-ultimate
-
 ## Install Minecraft
 echo "Installing Minecraft."
 wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
@@ -122,13 +84,8 @@ tar -xvf minecraft.tar.gz
 sudo mv minecraft-launcher /opt/ -v
 sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
 
-## Install Postman
-echo "Installing Postman."
-wget -O postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
-tar -xvf postman.tar.gz
-sudo mv Postman /opt/ -v
-sudo ln -svf /opt/Postman/Postman /usr/bin/postman
-
+# Update dnf
+echo "Updating dnf."
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
 # GNOME Extensions

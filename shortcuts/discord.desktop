@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Discord
-Comment=Chat for Communities and Friends
-Terminal=false
-Icon=/opt/Discord/discord.png
-Exec=/opt/Discord/Discord

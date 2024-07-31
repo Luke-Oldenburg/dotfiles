@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Postman
-Comment=API Development Environment
-Terminal=false
-Icon=/opt/Postman/app/icons/icon_128x128.png
-Exec=/opt/Postman/Postman
