@@ -38,14 +38,14 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install 2048-cli alien apostrophe audacity blender dconf-editor deja-dup epiphany fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale wget2-wget xkill yt-dlp -y -v
+sudo dnf install 2048-cli alien apostrophe audacity blender dconf-editor deja-dup epiphany fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale wget2-wget xkill yt-dlp -yv
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 ## Multimedia codecs
 echo "Installing multimedia codecs."
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y -v
-sudo dnf install lame\* --exclude=lame-devel -y -v
-sudo dnf group upgrade --with-optional Multimedia -y -v
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -yv
+sudo dnf install lame\* --exclude=lame-devel -yv
+sudo dnf group upgrade --with-optional Multimedia -yv
 
 # Install flatpaks
 echo "Installing flatpaks."
@@ -78,11 +78,11 @@ echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update -v
-sudo dnf install code -y -v
+sudo dnf install code -yv
 
 # Update dnf
 echo "Updating dnf."
-sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
+sudo dnf upgrade -yv && sudo dnf autoremove -yv
 
 # GNOME Extensions
 echo "Install these GNOME Extensions manually:"
