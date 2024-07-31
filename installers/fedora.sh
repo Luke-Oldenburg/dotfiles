@@ -61,13 +61,6 @@ flatpak install org.signal.Signal -yv
 
 # Misc install scripts
 cd ~/Downloads
-## VSCode
-echo "Installing VSCode."
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-dnf check-update -v
-sudo dnf install code -y -v
-
 ## Install chirp
 sudo dnf install python3-wxpython4 pipx
 wget -O chirp.whl https://archive.chirpmyradio.com/chirp_next/next-20240706/chirp-20240706-py3-none-any.whl
@@ -79,6 +72,13 @@ wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
 tar -xvf minecraft.tar.gz
 sudo mv minecraft-launcher /opt/ -v
 sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
+
+## VSCode
+echo "Installing VSCode."
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update -v
+sudo dnf install code -y -v
 
 # Update dnf
 echo "Updating dnf."
