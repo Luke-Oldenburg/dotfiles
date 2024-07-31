@@ -47,6 +47,9 @@ sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-open
 sudo dnf install lame\* --exclude=lame-devel -y -v
 sudo dnf group upgrade --with-optional Multimedia -y -v
 
+# CD to Downloads
+cd ~/Downloads
+
 # Misc install scripts
 ## Tailscale
 echo "Installing tailscale."
@@ -59,7 +62,10 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 dnf check-update -v
 sudo dnf install code -y -v
 
-cd ~/Downloads
+## Install chirp
+sudo dnf install python3-wxpython4 pipx
+wget -O chirp.whl https://archive.chirpmyradio.com/chirp_next/next-20240706/chirp-20240706-py3-none-any.whl
+pipx install --system-site-packages ./chirp.whl
 
 # RPMs
 echo "Installing RPMs."
@@ -122,11 +128,6 @@ wget -O postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
 tar -xvf postman.tar.gz
 sudo mv Postman /opt/ -v
 sudo ln -svf /opt/Postman/Postman /usr/bin/postman
-
-# Install chirp
-sudo dnf install python3-wxpython4 pipx
-wget -O chirp.whl https://archive.chirpmyradio.com/chirp_next/next-20240706/chirp-20240706-py3-none-any.whl
-pipx install --system-site-packages ./chirp.whl
 
 sudo dnf upgrade -y -v && sudo dnf autoremove -y -v
 
