@@ -73,6 +73,12 @@ tar -xvf minecraft.tar.gz
 sudo mv minecraft-launcher /opt/ -v
 sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
 
+## Radeon Drivers
+echo "Installing Radeon Drivers."
+wget -O amdgpu.rpm https://repo.radeon.com/amdgpu-install/6.1.3/rhel/9.3/amdgpu-install-6.1.60103-1.el9.noarch.rpm
+sudo dnf install amdgpu.rpm -yv
+sudo dnf install rocm-runtime rocm-hip-runtime* radeontop
+
 ## VSCode
 echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
@@ -93,6 +99,11 @@ echo "Clipboard Indicator:      https://extensions.gnome.org/extension/779/clipb
 echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-to-dock/"
 echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
 echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
+
+echo "Make sure to modify grub config."
+echo "Remove:    \"quiet\""
+echo "Add:       \"thunderbolt.host_reset=false\""
+echo "Run:       \"sudo grub2-mkconfig && sudo grub2-mkconfig -o /boot/grub2/grub.cfg\""
 
 read -rsp $'Press any key to continue...\n' -n 1 key
 
