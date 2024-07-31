@@ -29,8 +29,6 @@ gsettings set org.gnome.mutter check-alive-timeout 0
 # Copy files
 echo "Copying files."
 sudo cp -r ../shortcuts/* /usr/share/applications/ -v
-sudo cp ~/Programming/runc /opt/runc -v
-echo "alias runc='/opt/runc'" | sudo tee -a /etc/bashrc
 
 # Remove unwanted 3rd party repositories
 echo "Removing unwanted 3rd party repositories."
