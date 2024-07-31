@@ -103,22 +103,6 @@ sudo ln -svf /opt/android-studio/bin/studio.sh /usr/bin/android-studio
 echo "Installing Discord."
 bash discord.sh
 
-## Install Flutter
-echo "Installing Flutter."
-sudo dnf install clang cmake ninja-build pkg-config gtk3* -y -v
-wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.5-stable.tar.xz
-tar -xvf flutter.tar.xz
-sudo mv flutter /opt/ -v
-echo "export PATH=\"$PATH:/opt/flutter/bin\"" | sudo tee -a /etc/bashrc
-source /etc/bashrc
-flutter upgrade --force
-flutter precache
-dart --disable-analytics
-flutter config --no-analytics
-flutter config --enable-linux-desktop
-flutter config --enable-macos-desktop
-flutter config --enable-windows-desktop
-
 ## Install IntelliJ IDEA Ultimate
 echo "Installing IntelliJ IDEA Ultimate."
 wget -O idea.tar.gz https://download-cdn.jetbrains.com/idea/ideaIU-2024.1.tar.gz
