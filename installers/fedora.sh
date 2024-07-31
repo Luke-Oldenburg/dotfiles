@@ -38,7 +38,7 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update -v
-sudo dnf install 2048-cli alien apostrophe audacity blender dconf-editor deja-dup epiphany fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam wget2-wget xkill yt-dlp -y -v
+sudo dnf install 2048-cli alien apostrophe audacity blender dconf-editor deja-dup epiphany fastfetch ffmpeg-free gcc gcc-c++ ghex gimp gnome-extensions-app gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale wget2-wget xkill yt-dlp -y -v
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 ## Multimedia codecs
@@ -61,10 +61,6 @@ flatpak install org.signal.Signal -yv
 
 # Misc install scripts
 cd ~/Downloads
-## Tailscale
-echo "Installing tailscale."
-curl -fsSL https://tailscale.com/install.sh | sh
-
 ## VSCode
 echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
