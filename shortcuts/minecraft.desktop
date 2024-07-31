@@ -4,5 +4,5 @@ Version=1.0
 Name=Minecraft
 Comment=Official Minecraft Launcher
 Terminal=false
-Icon=/usr/share/icons/Adwaita/scalable/mimetypes/application-x-executable.svg
+Icon=/home/luke/.minecraft/launcher/icons/minecraft256.png
 Exec=/opt/minecraft-launcher/minecraft-launcher
