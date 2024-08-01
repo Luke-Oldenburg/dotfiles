@@ -26,8 +26,8 @@ sudo sysctl --load
 echo "Configuring gnome."
 gsettings set org.gnome.mutter check-alive-timeout 0
 
-# Copy files
-echo "Copying files."
+# Add shortcuts
+echo "Adding shortcuts."
 sudo cp -r ../shortcuts/* /usr/share/applications/ -v
 
 # Remove unwanted 3rd party repositories
@@ -71,6 +71,9 @@ echo "Installing Minecraft."
 wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
 tar -xvf minecraft.tar.gz
 sudo mv minecraft-launcher /opt/ -v
+cd -
+sudo mv ../assets/minecraft256.png /opt/minecraft-launcher/ -v
+cd ~/Downloads
 sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
 
 ## Radeon Drivers
