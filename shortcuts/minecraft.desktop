@@ -5,4 +5,4 @@ Name=Minecraft
 Comment=Official Minecraft Launcher
 Terminal=false
 Icon=/opt/minecraft-launcher/minecraft256.png
-Exec=/opt/minecraft-launcher/minecraft-launcher
+Exec=/usr/bin/bash -c "DRI_PRIME=1 minecraft-launcher"
