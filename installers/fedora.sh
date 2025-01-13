@@ -76,12 +76,6 @@ sudo mv ../assets/minecraft256.png /opt/minecraft-launcher/ -v
 cd ~/Downloads
 sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launcher
 
-## Radeon Drivers
-echo "Installing Radeon Drivers."
-wget -O amdgpu.rpm https://repo.radeon.com/amdgpu-install/6.1.3/rhel/9.3/amdgpu-install-6.1.60103-1.el9.noarch.rpm
-sudo dnf install amdgpu.rpm -y
-sudo dnf install rocm-runtime rocm-hip-runtime* radeontop -y
-
 ## VSCode
 echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
