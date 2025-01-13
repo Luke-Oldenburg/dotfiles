@@ -37,15 +37,15 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 
 # Install dnf packages
 echo "Installing dnf packages."
-dnf check-update -v
-sudo dnf install 2048-cli alien audacity blender chromium dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale wget2-wget xkill yt-dlp -yv
+dnf check-update
+sudo dnf install 2048-cli alien audacity blender chromium dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale wget2-wget xkill yt-dlp -y
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 ## Multimedia codecs
 echo "Installing multimedia codecs."
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -yv
-sudo dnf install lame\* --exclude=lame-devel -yv
-sudo dnf group upgrade --with-optional Multimedia -yv
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
+sudo dnf install lame\* --exclude=lame-devel -y
+sudo dnf group upgrade --with-optional Multimedia -y
 
 # Install flatpaks
 echo "Installing flatpaks."
@@ -79,19 +79,19 @@ sudo ln -svf /opt/minecraft-launcher/minecraft-launcher /usr/bin/minecraft-launc
 ## Radeon Drivers
 echo "Installing Radeon Drivers."
 wget -O amdgpu.rpm https://repo.radeon.com/amdgpu-install/6.1.3/rhel/9.3/amdgpu-install-6.1.60103-1.el9.noarch.rpm
-sudo dnf install amdgpu.rpm -yv
-sudo dnf install rocm-runtime rocm-hip-runtime* radeontop
+sudo dnf install amdgpu.rpm -y
+sudo dnf install rocm-runtime rocm-hip-runtime* radeontop -y
 
 ## VSCode
 echo "Installing VSCode."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -v
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-dnf check-update -v
-sudo dnf install code -yv
+dnf check-update
+sudo dnf install code -y
 
 # Update dnf
 echo "Updating dnf."
-sudo dnf upgrade -yv && sudo dnf autoremove -yv
+sudo dnf upgrade -y && sudo dnf autoremove -y
 
 # GNOME Extensions
 echo "Install these GNOME Extensions manually:"
