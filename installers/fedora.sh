@@ -38,7 +38,7 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update
-sudo dnf install 2048-cli alien audacity blender chromium dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale thefuck wget2-wget xkill yt-dlp -y
+sudo dnf install 2048-cli alien audacity blender chromium cowsay dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-tweaks godot golang htop inkscape java-21-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam tailscale thefuck wget2-wget xkill yt-dlp -y
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 # Configure thefuck
