@@ -9,6 +9,7 @@ git config --global alias.forcepull '!git fetch --all && git reset --hard origin
 # Configure bash
 echo "Configuring bash."
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
+echo "alias codehere=\"code . &\"" | sudo tee -a /etc/bashrc
 
 # Configure dnf
 echo "Configuring dnf."
