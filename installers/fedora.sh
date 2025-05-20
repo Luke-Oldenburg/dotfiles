@@ -101,6 +101,7 @@ echo "Caffeine:                 https://extensions.gnome.org/extension/517/caffe
 echo "Clipboard Indicator:      https://extensions.gnome.org/extension/779/clipboard-indicator/"
 echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-to-dock/"
 echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
+echo "Tiling Shell:             https://extensions.gnome.org/extension/7065/tiling-shell/"
 echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
 
 echo "Make sure to modify grub config."
