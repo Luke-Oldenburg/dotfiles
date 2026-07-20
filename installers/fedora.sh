@@ -74,6 +74,10 @@ sudo dnf install python3-wxpython4 pipx
 wget -O chirp.whl https://archive.chirpmyradio.com/chirp_next/next-20240706/chirp-20240706-py3-none-any.whl
 pipx install --system-site-packages ./chirp.whl
 
+## Install Vicinae
+curl -fsSL https://vicinae.com/install | sudo bash
+systemctl --user enable vicinae --now
+
 ## Install Minecraft
 echo "Installing Minecraft."
 wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
@@ -105,6 +109,7 @@ echo "Dash to Dock:             https://extensions.gnome.org/extension/307/dash-
 echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
 echo "Tiling Shell:             https://extensions.gnome.org/extension/7065/tiling-shell/"
 echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
+echo "Vicinae:                  https://extensions.gnome.org/extension/8594/vicinae/"
 
 echo "Make sure to modify grub config."
 echo "Remove:    \"quiet\""
