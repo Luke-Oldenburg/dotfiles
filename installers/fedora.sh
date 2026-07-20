@@ -4,7 +4,6 @@
 echo "Configuring git."
 git config --global user.name "Luke Oldenburg"
 git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
-git config --global alias.forcepull '!git fetch --all && git reset --hard origin/$(git symbolic-ref --short HEAD)'
 
 # Configure bash
 echo "Configuring bash."
