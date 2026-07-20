@@ -10,6 +10,9 @@ git config --global alias.forcepull '!git fetch --all && git reset --hard origin
 echo "Configuring bash."
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
 echo "alias codehere=\"code . &\"" | sudo tee -a /etc/bashrc
+echo "alias stripehook='stripe listen --forward-to localhost:3000/stripe/webhook'" | sudo tee -a /etc/bashrc
+echo "alias dnfup='sudo dnf upgrade -y && sudo dnf autoremove -y'" | sudo tee -a /etc/bashrc
+
 
 # Configure dnf
 echo "Configuring dnf."
