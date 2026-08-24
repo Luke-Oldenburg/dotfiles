@@ -115,7 +115,6 @@ echo "Vicinae:                  https://extensions.gnome.org/extension/8594/vici
 
 echo "Make sure to modify grub config."
 echo "Remove:    \"quiet\""
-echo "Add:       \"thunderbolt.host_reset=false\""
 echo "Run:       \"sudo grub2-mkconfig && sudo grub2-mkconfig -o /boot/grub2/grub.cfg\""
 
 read -rsp $'Press any key to continue...\n' -n 1 key
