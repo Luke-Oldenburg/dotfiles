@@ -27,7 +27,7 @@ sudo sysctl --load
 
 # Configure gnome
 echo "Configuring gnome."
-gsettings set org.gnome.mutter check-alive-timeout 0
+gsettings set org.gnome.mutter check-alive-timeout 0 # Fixes being spammed with "This application is not responding"
 
 # Add shortcuts
 echo "Adding shortcuts."
