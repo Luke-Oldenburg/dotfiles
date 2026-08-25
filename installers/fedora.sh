@@ -1,17 +1,11 @@
 #!/bin/bash
 
-# Configure git
-echo "Configuring git."
-git config --global user.name "Luke Oldenburg"
-git config --global user.email "87272260+Luke-Oldenburg@users.noreply.github.com"
-
 # Configure bash
 echo "Configuring bash."
 echo "bind 'set completion-ignore-case on'" | sudo tee -a /etc/bashrc
 echo "alias codehere=\"code . &\"" | sudo tee -a /etc/bashrc
 echo "alias stripehook='stripe listen --forward-to localhost:3000/stripe/webhook'" | sudo tee -a /etc/bashrc
 echo "alias dnfup='sudo dnf upgrade -y && sudo dnf autoremove -y'" | sudo tee -a /etc/bashrc
-
 
 # Configure dnf
 echo "Configuring dnf."
