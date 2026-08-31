@@ -35,7 +35,7 @@ sudo rm -f /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.r
 # Install dnf packages
 echo "Installing dnf packages."
 dnf check-update
-sudo dnf install 2048-cli alien audacity blender brainfuck cowsay dconf-editor deja-dup fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-power-monitor gnome-tweaks godot golang htop inkscape java-25-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam thefuck wget2-wget xkill yt-dlp -y
+sudo dnf install 2048-cli alien audacity blender brainfuck cowsay dconf-editor fastfetch ffmpeg-free gcc gcc-c++ gh.x86_64 ghex gimp gnome-extensions-app gnome-firmware gnome-power-monitor gnome-tweaks godot golang htop inkscape java-25-openjdk* kicad mpv ncdu nmap nodejs obs-studio redis rust seahorse steam thefuck wget2-wget xkill yt-dlp -y
 sudo ln -svf /usr/bin/fastfetch /usr/bin/fetch
 
 # Configure thefuck
@@ -60,6 +60,7 @@ flatpak install com.google.AndroidStudio -yv
 flatpak install com.jetbrains.IntelliJ-IDEA-Ultimate -yv
 flatpak install com.protonvpn.www -yv
 flatpak install com.slack.Slack -yv
+flatpak install flathub org.gnome.DejaDup -yv
 flatpak install org.onlyoffice.desktopeditors -yv
 flatpak install org.signal.Signal -yv
 
